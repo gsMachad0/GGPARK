@@ -19,10 +19,16 @@ create table setor(
 	codFkParque int references parque(codParque)
 );
 
+create table acesso(
+	codAcesso int primary key,
+	tipoAcesso int,
+	infoAcesso char(50)
+);
+
 create table tipoFuncionario(
 	codTipoFunc int primary key,
 	tipoFuncionario char(50),
-	tipoAcesso char(50)
+	tipoAcesso char(50) references acesso(codAcesso)
 );
 
 create table funcionario(
