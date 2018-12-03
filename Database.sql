@@ -35,7 +35,9 @@ create table funcionario(
 	codFunc int primary key,
 	nome char(50),
 	codFkSetor int references setor(codsetor),
-	codFkTipoFunc int references tipofuncionario(codtipofunc)
+	codFkTipoFunc int references tipofuncionario(codtipofunc),
+	senha char(50),
+	usuario char(50)
 );
 
 create table status(
@@ -89,7 +91,9 @@ create table cliente(
 	nome char(50),
 	codEnd int references endereco(codEnd),
 	CPF char(50),
-	telefone char(50)
+	telefone char(50),
+	senha char(50),
+	usuario char(50)
 );
 
 create table cartao(
