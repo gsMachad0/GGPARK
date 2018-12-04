@@ -1,53 +1,53 @@
 create table endereco(
 	codEnd int primary key,
-	estado char(50),
-	cidade char(50),
-	bairro char(50),
-	rua char(50),
+	estado varchar(50),
+	cidade varchar(50),
+	bairro varchar(50),
+	rua varchar(50),
 	numero int
 );
 
 create table parque (
-	nomeParque char(50),
+	nomeParque varchar(50),
 	codEnd int references endereco(codEnd),
 	codParque int primary key
 );
 
 create table setor(
 	codSetor int primary key,
-	setor char(50),
+	setor varchar(50),
 	codFkParque int references parque(codParque)
 );
 
 create table acesso(
 	codAcesso int primary key,
 	tipoAcesso int,
-	infoAcesso char(50)
+	infoAcesso varchar(50)
 );
 
 create table tipoFuncionario(
 	codTipoFunc int primary key,
-	tipoFuncionario char(50),
-	tipoAcesso char(50) references acesso(codAcesso)
+	tipoFuncionario varchar(50),
+	tipoAcesso varchar(50) references acesso(codAcesso)
 );
 
 create table funcionario(
 	codFunc int primary key,
-	nome char(50),
+	nome varchar(50),
 	codFkSetor int references setor(codsetor),
 	codFkTipoFunc int references tipofuncionario(codtipofunc),
-	senha char(50),
-	usuario char(50)
+	senha varchar(50),
+	usuario varchar(50)
 );
 
 create table status(
 	codStatus int primary key,
-	nomeStatus char(50)
+	nomeStatus varchar(50)
 );
 
 create table tipoRequisicao(
 	codTipoReq int primary key,
-	tipoRequisicao char(50)
+	tipoRequisicao varchar(50)
 );
 
 create table registro(
@@ -57,7 +57,7 @@ create table registro(
 
 create table requisicao(
 	codReq int primary key,
-	infoReq char(50),
+	infoReq varchar(50),
 	codFkStatus int references status(codStatus),
 	codFkFunc int references funcionario(codFunc),
 	codFkTipoReq int references tipoRequisicao(codTipoReq),
@@ -66,7 +66,7 @@ create table requisicao(
 
 create table pagina(
 	codPagina int primary key,
-	enderecoWeb char(50),
+	enderecoWeb varchar(50),
 	online bool,
 	totalVisitas int,
 	codFkParque int references parque(codparque)
@@ -74,32 +74,32 @@ create table pagina(
 
 create table tipoAtracao(
 	codTipoAtr int primary key,
-	tipoAtracao char(50)
+	tipoAtracao varchar(50)
 );
 
 create table atracao(
 	codAtracao int primary key,
 	lucro float,
 	manutencao bool,
-	nomeAtr char(50),
+	nomeAtr varchar(50),
 	codFkParque int references parque(codparque),
 	codFkTipoAtr int references tipoAtracao(codTipoAtr)
 );
 
 create table cliente(
 	codCliente int primary key,
-	nome char(50),
+	nome varchar(50),
 	codEnd int references endereco(codEnd),
-	CPF char(50),
-	telefone char(50),
-	senha char(50),
-	usuario char(50)
+	CPF varchar(50),
+	telefone varchar(50),
+	senha varchar(50),
+	usuario varchar(50)
 );
 
 create table cartao(
 	codCartao int primary key,
 	saldo float,
-	numCartao char(50),
+	numCartao varchar(50),
 	codFkCliente int references cliente(codcliente)
 );
 
